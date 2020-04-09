@@ -10,13 +10,13 @@ void generateMp3(String input, String output) async {
   final apiKey = env['XF_TTS_KEY$app'];
   final apiSecret = env['XF_TTS_SECRET$app'];
   final vcn = env['XF_TTS_VCN'] ?? 'xiaoyan';
-  final speed = env['XF_TTS_SPEED'] ?? 70;
-  final volume = env['XF_TTS_VOLUME'] ?? 60;
+  final speed = env['XF_TTS_SPEED'] ?? '70';
+  final volume = env['XF_TTS_VOLUME'] ?? '60';
 
   final doc = await fm.parseFile(input);
 
   final tts =
-      TTS(appId, apiKey, apiSecret, vcn: vcn, speed: speed, volume: volume);
+      TTS(appId, apiKey, apiSecret, vcn: vcn, speed: int.parse(speed), volume: int.parse(volume));
 
-  await tts.generateMp3ForMarkdown(doc.content, output);
+  await tts.generateMp3ForMarkdown(doc.content ?? doc.toString(), output);
 }
