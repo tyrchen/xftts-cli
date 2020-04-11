@@ -20,6 +20,6 @@ void main(List<String> arguments) async {
 }
 
 void _usage() {
-  print('Usage: xftts-cli <input_file> <output_file>');
+  print('Usage: xftts <input_file> <output_file>');
   exit(0);
 }
