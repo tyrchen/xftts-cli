@@ -10,6 +10,7 @@ dependencies:
   args: ^1.5.0
   front_matter: ^1.1.0
   xftts: '>=0.1.2 <1.0.0'
+  mp3_info: ^0.1.3
   
 dev_dependencies:
   pedantic: ^1.8.0

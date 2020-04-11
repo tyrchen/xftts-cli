@@ -1,11 +1,10 @@
 DARTC=dart2native
-OUTDIR=~/bin
-SRC=bin/xftts.dart bin/gen_readme.dart
-BIN=$(SRC:bin/%.dart=%)
+OUTDIR=/Users/tchen/bin
+SRC=bin/podgen.dart
+BIN=$(SRC:bin/%.dart=$(OUTDIR)/%)
 
 all: $(BIN)
-	@mv $(BIN) $(OUTDIR)
 
-$(BIN):%:bin/%.dart
+$(BIN):$(OUTDIR)/%:bin/%.dart
 	@echo "Creating $@ with $<."
 	-@$(DARTC) $< -o $@
