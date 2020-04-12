@@ -1,5 +1,10 @@
 ## 0.1.4
 
+Fix feed generation issue.
+
+
+## 0.1.4
+
 Add podcast support.
 
 ## 0.1.3

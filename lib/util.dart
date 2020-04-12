@@ -94,15 +94,14 @@ FutureOr<String> genPodcast(String src, String asset) async {
     items.add(await _genItem(doc, title));
   }
 
-  return '''
-  <?xml version="1.0" encoding="UTF-8"?>
+  return '''<?xml version="1.0" encoding="UTF-8"?>
     <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
     <channel>
     $channel
-    </channel>
+
     ${items.join('\n')}
-  </rss>
-  ''';
+    </channel>
+  </rss>''';
 }
 
 FutureOr<String> genHtml(String src, String asset) async {
@@ -174,7 +173,7 @@ FutureOr<String> _genChannelInfo(dynamic doc) async {
   final keywords = doc['keywords'].join(',');
   return '''
   <title>${doc['title']}</title>
-  <link>${doc['link']}<link>
+  <link>${doc['link']}</link>
   <language>${doc['language']}</language>
   <itunes:subtitle>${doc['subtitle'] ?? ''}</itunes:subtitle>
   <itunes:author>${doc['author']}</itunes:author>
@@ -182,10 +181,11 @@ FutureOr<String> _genChannelInfo(dynamic doc) async {
   <description>${doc['description']}</description>
   <itunes:owner>
       <itunes:name>${doc['author']}</itunes:name>
+      <itunes:email>${doc['email']}</itunes:email>
   </itunes:owner>
   <itunes:explicit>no</itunes:explicit>
   <itunes:image href="${imageUrl}" />
-  <itunes:category text="${doc['category']}"/></itunes:category>
+  <itunes:category text="${doc['category']}"/>
   <itunes:keywords>${keywords}</itunes:keywords>
   ''';
 }
